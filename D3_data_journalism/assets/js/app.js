@@ -33,6 +33,15 @@ d3.csv("assets/data/data.csv").then(function(censusData){
         data.healthcare = +data.healthcare;
         data.poverty = +data.poverty;
         console.log(censusData)
-    })
+    });
+
+    var xLinearScale = d3.scaleLinear()
+        .domain([350000, d3.max(readData, d => d.poverty)])
+        .range([0, width])
+
+    var yLinearScale = d3.scaleLinear()
+        .domain([15, d3.max(readData, d => d.healthcare)])
+        .range([height, 0])
+        
 
 });
