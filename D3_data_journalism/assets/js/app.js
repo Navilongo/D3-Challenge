@@ -22,3 +22,7 @@ var svg = d3.select("#scatter")
 // Append SVG group
 const chartGroup = svg.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+let XAxis = "poverty";
+let YAxis = "healthcare";
+
