@@ -26,3 +26,13 @@ const chartGroup = svg.append("g")
 let XAxis = "poverty";
 let YAxis = "healthcare";
 
+d3.csv("assets/data/data.csv").then(function(censusData){
+    censusData.forEach(data => {
+        data.income = +data.income;
+        data.obesity = +data.obesity;
+        data.healthcare = +data.healthcare;
+        data.poverty = +data.poverty;
+        console.log(censusData)
+    })
+
+});
