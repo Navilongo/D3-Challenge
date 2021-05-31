@@ -6,7 +6,7 @@ var margin = {
     top: 20,
     right: 40,
     bottom: 60,
-    left: 50
+    left: 100
 };
 
 // setting up borders
@@ -23,9 +23,6 @@ var svg = d3.select("#scatter")
 const chartGroup = svg.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-let XAxis = "poverty";
-let YAxis = "healthcare";
-
 d3.csv("assets/data/data.csv").then(function(censusData){
     censusData.forEach(data => {
         data.income = +data.income;
@@ -33,10 +30,12 @@ d3.csv("assets/data/data.csv").then(function(censusData){
         data.healthcare = +data.healthcare;
         data.poverty = +data.poverty;
         console.log(censusData)
+        //testing that data is being pulled
+        //console.log(data.poverty) 
     });
 
     var xLinearScale = d3.scaleLinear()
-        .domain([0, d3.max(censusData, d => d.poverty)])
+        .domain([8, d3.max(censusData, d => d.poverty)])
         .range([0, width])
 
     var yLinearScale = d3.scaleLinear()
@@ -57,7 +56,7 @@ d3.csv("assets/data/data.csv").then(function(censusData){
     var circlesGroup = chartGroup.selectAll("circle")
         .data(censusData)
         .enter()
-        .append("cirlce")
+        .append("circle")
         .attr("cx", d => xLinearScale (d.poverty))
         .attr("cy", d => yLinearScale (d.healthcare))
         .attr("r", "10")
