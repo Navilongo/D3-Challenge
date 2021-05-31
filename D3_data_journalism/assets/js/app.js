@@ -36,11 +36,11 @@ d3.csv("assets/data/data.csv").then(function(censusData){
     });
 
     var xLinearScale = d3.scaleLinear()
-        .domain([25, d3.max(censusData, d => d.poverty)])
+        .domain([0, d3.max(censusData, d => d.poverty)])
         .range([0, width])
 
     var yLinearScale = d3.scaleLinear()
-        .domain([27, d3.max(censusData, d => d.healthcare)])
+        .domain([0, d3.max(censusData, d => d.healthcare)])
         .range([height, 0])
 
     var bottomAxis = d3.axisBottom(xLinearScale);
