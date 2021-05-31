@@ -36,15 +36,34 @@ d3.csv("assets/data/data.csv").then(function(censusData){
     });
 
     var xLinearScale = d3.scaleLinear()
-        .domain([350000, d3.max(readData, d => d.poverty)])
+        .domain([25, d3.max(censusData, d => d.poverty)])
         .range([0, width])
 
     var yLinearScale = d3.scaleLinear()
-        .domain([15, d3.max(readData, d => d.healthcare)])
+        .domain([27, d3.max(censusData, d => d.healthcare)])
         .range([height, 0])
 
     var bottomAxis = d3.axisBottom(xLinearScale);
     var leftAxis = d3.axisLeft(yLinearScale);
+
+    // chart axis
+    chartGroup.append("g")
+        .attr("transform", `translate(0, ${height})`)
+        .call(bottomAxis);
+
+    chartGroup.append("g")
+        .call(leftAxis);
+    
+    var circlesGroup = chartGroup.selectAll("circle")
+        .data(censusData)
+        .enter()
+        .append("cirlce")
+        .attr("cx", d => xLinearScale (d.poverty))
+        .attr("cy", d => yLinearScale (d.healthcare))
+        .attr("r", "10")
+        .attr("fill", "red")
+        .attr("opacity", ".25");
+
 
 
 });
