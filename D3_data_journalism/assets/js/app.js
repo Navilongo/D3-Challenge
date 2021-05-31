@@ -42,6 +42,9 @@ d3.csv("assets/data/data.csv").then(function(censusData){
     var yLinearScale = d3.scaleLinear()
         .domain([15, d3.max(readData, d => d.healthcare)])
         .range([height, 0])
-        
+
+    var bottomAxis = d3.axisBottom(xLinearScale);
+    var leftAxis = d3.axisLeft(yLinearScale);
+
 
 });
