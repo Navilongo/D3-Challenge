@@ -3,7 +3,7 @@
 ## Background
 I've been contracted to work at the newsroom, and this is where we need to show what we've got. 
 
-First order of business: Visualization!
+**First order of business: Visualization!**
 
 We want to write a piece in which we discuss the trends that "shape people's lives", amongst them we have data that support
 the relationships between people's income, health, where they fit in the poverty line, age and other demographics. 
