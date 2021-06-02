@@ -79,6 +79,21 @@ d3.csv("assets/data/data.csv").then(function(censusData){
         .attr("class", "axisText")
         .text("Lacks Healthcare %")
 
+    var toolTip = d3.tip()
+        .attr("class", "tooltip")
+        .html( function (d) {
+            return (`${d.state} <br> Poverty: {d.poverty}% <br> Obesity: {d.obesity}%`)
+        });
+
+    chartGroup.call(toolTip);
+
+    circlesGroup.on("mouseover", function(data) {
+        toolTip.show(data, this);
+    })
+        .on("mouseout", function(data, index) {
+            toolTip.hide(data)
+        })
+
 
 
 });
