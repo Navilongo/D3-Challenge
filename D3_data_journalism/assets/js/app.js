@@ -63,6 +63,13 @@ d3.csv("assets/data/data.csv").then(function(censusData){
         .attr("fill", "red")
         .attr("opacity", ".25");
 
+    // Labels
+    // x-axis
+    chartGroup.append("text")
+        .attr('transform', `translate(${width}, ${height + margin.top})`)
+        .attr("class", "axisText")
+        .text("Poverty %")
+
 
 
 });
