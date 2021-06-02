@@ -75,7 +75,9 @@ d3.csv("assets/data/data.csv").then(function(censusData){
         .attr("dy", -416)
         .text(d => d.abbr)
         .attr("font-size", "10px")
-        .attr("fill", "black")
+        .attr("fill", "blue")
+        .attr("font-weight", 760)
+        
 
     // Labels
     // x-axis
