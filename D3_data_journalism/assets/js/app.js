@@ -70,6 +70,14 @@ d3.csv("assets/data/data.csv").then(function(censusData){
         .attr("class", "axisText")
         .text("Poverty %")
 
+    // y-axis
+    chartGroup.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left/2)
+        .attr("x", 0 - (height/2) - 50)
+        .attr("dy", "1em")
+        .attr("class", "axisText")
+        .text("Lacks Healthcare %")
 
 
 
