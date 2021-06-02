@@ -35,11 +35,11 @@ d3.csv("assets/data/data.csv").then(function(censusData){
     });
 
     var xLinearScale = d3.scaleLinear()
-        .domain([8, d3.max(censusData, d => d.poverty)])
+        .domain([8.8, d3.max(censusData, d => d.poverty)])
         .range([0, width])
 
     var yLinearScale = d3.scaleLinear()
-        .domain([0, d3.max(censusData, d => d.healthcare)])
+        .domain([4, d3.max(censusData, d => d.healthcare)])
         .range([height, 0])
 
     var bottomAxis = d3.axisBottom(xLinearScale);
@@ -63,6 +63,20 @@ d3.csv("assets/data/data.csv").then(function(censusData){
         .attr("fill", "red")
         .attr("opacity", ".25");
 
+
+    // adding state abbreviation to points
+    chartGroup.select("g")
+        .selectAll("circle")
+        .data(censusData)
+        .enter()
+        .append("text")
+        .attr("x", d => xLinearScale (d.poverty))
+        .attr("y", d => yLinearScale (d.healthcare))
+        .attr("dy", -416)
+        .text(d => d.abbr)
+        .attr("font-size", "10px")
+        .attr("fill", "black")
+
     // Labels
     // x-axis
     chartGroup.append("text")
@@ -79,11 +93,14 @@ d3.csv("assets/data/data.csv").then(function(censusData){
         .attr("class", "axisText")
         .text("Lacks Healthcare %")
 
+
+
     var toolTip = d3.tip()
         .attr("class", "tooltip")
         .html( function (d) {
-            return (`${d.state} <br> Poverty: {d.poverty}% <br> Obesity: {d.obesity}%`)
+            return (`${d.state} <br> Poverty: ${d.poverty}% <br> Obesity: ${d.obesity}%`)
         });
+        
 
     chartGroup.call(toolTip);
 
@@ -93,6 +110,10 @@ d3.csv("assets/data/data.csv").then(function(censusData){
         .on("mouseout", function(data, index) {
             toolTip.hide(data)
         })
+
+    
+        
+
 
 
 
